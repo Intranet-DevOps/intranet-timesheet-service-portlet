@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="sg.com.para.intranet.timesheet.services.model.Timesheet" />
+	<import class="sg.com.para.intranet.timesheet.services.model.TimesheetDetails" />
+	<class name="sg.com.para.intranet.timesheet.services.model.impl.TimesheetImpl" table="intranet_timesheet">
+		<cache usage="read-write" />
+		<id name="timesheetId" type="int">
+			<generator class="assigned" />
+		</id>
+		<property name="employeeScreenName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="logDate" type="org.hibernate.type.TimestampType" />
+		<property name="regular" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="overtime" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="sick" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="vacation" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="holiday" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="unpaid" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="other" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="remarks" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="projectCode" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="approvedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="approvedDate" type="org.hibernate.type.TimestampType" />
+		<property name="processedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="processedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="sg.com.para.intranet.timesheet.services.model.impl.TimesheetDetailsImpl" table="intranet_timesheet_details">
+		<cache usage="read-write" />
+		<id name="timesheetDetailsId" type="int">
+			<generator class="assigned" />
+		</id>
+		<property name="timesheetId" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="clockInTime" type="org.hibernate.type.TimestampType" />
+		<property name="clockOutTime" type="org.hibernate.type.TimestampType" />
+		<property name="remarks" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="type" type="com.liferay.portal.dao.orm.hibernate.StringType" column="type_" />
+		<property name="fulldayOrTimeBased" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

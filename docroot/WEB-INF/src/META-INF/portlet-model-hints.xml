@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="sg.com.para.intranet.timesheet.services.model.Timesheet">
+		<field name="timesheetId" type="int" />
+		<field name="employeeScreenName" type="String" />
+		<field name="logDate" type="Date" />
+		<field name="regular" type="double" />
+		<field name="overtime" type="double" />
+		<field name="sick" type="double" />
+		<field name="vacation" type="double" />
+		<field name="holiday" type="double" />
+		<field name="unpaid" type="double" />
+		<field name="other" type="double" />
+		<field name="remarks" type="String" />
+		<field name="status" type="String" />
+		<field name="projectCode" type="String" />
+		<field name="approvedBy" type="String" />
+		<field name="approvedDate" type="Date" />
+		<field name="processedBy" type="String" />
+		<field name="processedDate" type="Date" />
+	</model>
+	<model name="sg.com.para.intranet.timesheet.services.model.TimesheetDetails">
+		<field name="timesheetDetailsId" type="int" />
+		<field name="timesheetId" type="int" />
+		<field name="clockInTime" type="Date" />
+		<field name="clockOutTime" type="Date" />
+		<field name="remarks" type="String" />
+		<field name="type" type="String" />
+		<field name="fulldayOrTimeBased" type="String" />
+	</model>
+</model-hints>

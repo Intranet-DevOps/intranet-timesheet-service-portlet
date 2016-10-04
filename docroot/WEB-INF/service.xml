@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
-<service-builder package-path="com.liferay.sample">
-	<author>fernando</author>
-	<namespace>SAMPLE</namespace>
-
-	
+<service-builder package-path="sg.com.para.intranet.timesheet.services">
+	<author>Fernando Karnagi</author>
+	<namespace>intranettimesheet</namespace> 
+	<entity name="Timesheet" local-service="true" remote-service="true"
+		table="intranet_timesheet">
+		<column name="timesheetId" type="int" primary="true"></column>
+		<column name="employeeScreenName" type="String"></column>
+		<column name="logDate" type="Date"></column>
+		<column name="regular" type="double"></column>
+		<column name="overtime" type="double"></column>
+		<column name="sick" type="double"></column>
+		<column name="vacation" type="double"></column>
+		<column name="holiday" type="double"></column>
+		<column name="unpaid" type="double"></column>
+		<column name="other" type="double"></column>
+		<column name="remarks" type="String"></column>
+		<column name="status" type="String"></column>
+		<column name="projectCode" type="String"></column>
+		<column name="approvedBy" type="String"></column>
+		<column name="approvedDate" type="Date"></column>
+		<column name="processedBy" type="String"></column>
+		<column name="processedDate" type="Date"></column>
+	</entity>
+	<entity name="TimesheetDetails" local-service="true"
+		remote-service="true" table="intranet_timesheet_details">
+		<column name="timesheetDetailsId" type="int" primary="true"></column>
+		<column name="timesheetId" type="int"></column>
+		<column name="clockInTime" type="Date"></column>
+		<column name="clockOutTime" type="Date"></column>
+		<column name="remarks" type="String"></column>
+		<column name="type" type="String"></column>
+		<column name="fulldayOrTimeBased" type="String"></column>
+	</entity>
 </service-builder>
