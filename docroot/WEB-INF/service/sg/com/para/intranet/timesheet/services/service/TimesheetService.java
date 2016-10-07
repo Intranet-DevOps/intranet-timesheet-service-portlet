@@ -69,6 +69,11 @@ public interface TimesheetService extends BaseService, InvokableService {
 	public sg.com.para.intranet.timesheet.services.model.Timesheet getTimesheet(
 		int timesheetId, java.lang.String actor) throws java.lang.Exception;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<sg.com.para.intranet.timesheet.services.model.TimesheetMonth> getTimesheetMonth(
+		int year, int month, java.lang.String userId, java.lang.String actor)
+		throws java.lang.Exception;
+
 	public java.util.List<sg.com.para.intranet.timesheet.services.model.Timesheet> findTimesheetsByUser(
 		java.util.Date startDate, java.util.Date endDate,
 		java.lang.String userId, java.lang.String actor)

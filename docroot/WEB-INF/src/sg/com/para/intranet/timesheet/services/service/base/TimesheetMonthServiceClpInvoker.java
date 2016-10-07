@@ -14,7 +14,7 @@
 
 package sg.com.para.intranet.timesheet.services.service.base;
 
-import sg.com.para.intranet.timesheet.services.service.TimesheetDetailsServiceUtil;
+import sg.com.para.intranet.timesheet.services.service.TimesheetMonthServiceUtil;
 
 import java.util.Arrays;
 
@@ -22,8 +22,8 @@ import java.util.Arrays;
  * @author Fernando Karnagi
  * @generated
  */
-public class TimesheetDetailsServiceClpInvoker {
-	public TimesheetDetailsServiceClpInvoker() {
+public class TimesheetMonthServiceClpInvoker {
+	public TimesheetMonthServiceClpInvoker() {
 		_methodName30 = "getBeanIdentifier";
 
 		_methodParameterTypes30 = new String[] {  };
@@ -37,12 +37,12 @@ public class TimesheetDetailsServiceClpInvoker {
 		Object[] arguments) throws Throwable {
 		if (_methodName30.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes30, parameterTypes)) {
-			return TimesheetDetailsServiceUtil.getBeanIdentifier();
+			return TimesheetMonthServiceUtil.getBeanIdentifier();
 		}
 
 		if (_methodName31.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes31, parameterTypes)) {
-			TimesheetDetailsServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
+			TimesheetMonthServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}

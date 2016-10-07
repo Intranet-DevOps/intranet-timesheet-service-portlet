@@ -25,6 +25,7 @@ import com.liferay.portal.service.persistence.UserPersistence;
 import sg.com.para.intranet.timesheet.services.model.Timesheet;
 import sg.com.para.intranet.timesheet.services.service.TimesheetService;
 import sg.com.para.intranet.timesheet.services.service.persistence.TimesheetDetailsPersistence;
+import sg.com.para.intranet.timesheet.services.service.persistence.TimesheetMonthPersistence;
 import sg.com.para.intranet.timesheet.services.service.persistence.TimesheetPersistence;
 
 import javax.sql.DataSource;
@@ -161,6 +162,63 @@ public abstract class TimesheetServiceBaseImpl extends BaseServiceImpl
 	public void setTimesheetDetailsPersistence(
 		TimesheetDetailsPersistence timesheetDetailsPersistence) {
 		this.timesheetDetailsPersistence = timesheetDetailsPersistence;
+	}
+
+	/**
+	 * Returns the timesheet month local service.
+	 *
+	 * @return the timesheet month local service
+	 */
+	public sg.com.para.intranet.timesheet.services.service.TimesheetMonthLocalService getTimesheetMonthLocalService() {
+		return timesheetMonthLocalService;
+	}
+
+	/**
+	 * Sets the timesheet month local service.
+	 *
+	 * @param timesheetMonthLocalService the timesheet month local service
+	 */
+	public void setTimesheetMonthLocalService(
+		sg.com.para.intranet.timesheet.services.service.TimesheetMonthLocalService timesheetMonthLocalService) {
+		this.timesheetMonthLocalService = timesheetMonthLocalService;
+	}
+
+	/**
+	 * Returns the timesheet month remote service.
+	 *
+	 * @return the timesheet month remote service
+	 */
+	public sg.com.para.intranet.timesheet.services.service.TimesheetMonthService getTimesheetMonthService() {
+		return timesheetMonthService;
+	}
+
+	/**
+	 * Sets the timesheet month remote service.
+	 *
+	 * @param timesheetMonthService the timesheet month remote service
+	 */
+	public void setTimesheetMonthService(
+		sg.com.para.intranet.timesheet.services.service.TimesheetMonthService timesheetMonthService) {
+		this.timesheetMonthService = timesheetMonthService;
+	}
+
+	/**
+	 * Returns the timesheet month persistence.
+	 *
+	 * @return the timesheet month persistence
+	 */
+	public TimesheetMonthPersistence getTimesheetMonthPersistence() {
+		return timesheetMonthPersistence;
+	}
+
+	/**
+	 * Sets the timesheet month persistence.
+	 *
+	 * @param timesheetMonthPersistence the timesheet month persistence
+	 */
+	public void setTimesheetMonthPersistence(
+		TimesheetMonthPersistence timesheetMonthPersistence) {
+		this.timesheetMonthPersistence = timesheetMonthPersistence;
 	}
 
 	/**
@@ -346,6 +404,12 @@ public abstract class TimesheetServiceBaseImpl extends BaseServiceImpl
 	protected sg.com.para.intranet.timesheet.services.service.TimesheetDetailsService timesheetDetailsService;
 	@BeanReference(type = TimesheetDetailsPersistence.class)
 	protected TimesheetDetailsPersistence timesheetDetailsPersistence;
+	@BeanReference(type = sg.com.para.intranet.timesheet.services.service.TimesheetMonthLocalService.class)
+	protected sg.com.para.intranet.timesheet.services.service.TimesheetMonthLocalService timesheetMonthLocalService;
+	@BeanReference(type = sg.com.para.intranet.timesheet.services.service.TimesheetMonthService.class)
+	protected sg.com.para.intranet.timesheet.services.service.TimesheetMonthService timesheetMonthService;
+	@BeanReference(type = TimesheetMonthPersistence.class)
+	protected TimesheetMonthPersistence timesheetMonthPersistence;
 	@BeanReference(type = com.liferay.counter.service.CounterLocalService.class)
 	protected com.liferay.counter.service.CounterLocalService counterLocalService;
 	@BeanReference(type = com.liferay.portal.service.ResourceLocalService.class)

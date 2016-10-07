@@ -21,6 +21,7 @@ import java.util.List;
 
 import sg.com.para.intranet.timesheet.services.model.Timesheet;
 import sg.com.para.intranet.timesheet.services.model.TimesheetDetails;
+import sg.com.para.intranet.timesheet.services.model.TimesheetMonth;
 import sg.com.para.intranet.timesheet.services.model.bean.TimesheetBean;
 import sg.com.para.intranet.timesheet.services.service.base.TimesheetServiceBaseImpl;
 import sg.com.para.intranet.timsheet.services.util.DateUtils;
@@ -80,6 +81,17 @@ public class TimesheetServiceImpl extends TimesheetServiceBaseImpl {
 		return null;
 	}
 
+	public List<TimesheetMonth> getTimesheetMonth(int year, int month, String userId, String actor) throws Exception {
+		_log.info("getTimesheetMonth [year: " + year + ", month: " + month + ", userId: " + userId + ", actor: "
+				+ actor + "]");
+
+		DynamicQuery dynaQuery = DynamicQueryFactoryUtil.forClass(TimesheetMonth.class, getClass().getClassLoader())
+				.add(PropertyFactoryUtil.forName("year").eq(year)).add(PropertyFactoryUtil.forName("month").eq(month));
+		List<TimesheetMonth> timesheetMonths = timesheetMonthPersistence.findWithDynamicQuery(dynaQuery);
+		return timesheetMonths;
+
+	}
+
 	public List<Timesheet> findTimesheetsByUser(Date startDate, Date endDate, String userId, String actor)
 			throws Exception {
 		_log.info("findTimesheetsByUser [startDate: " + startDate + ", endDate: " + endDate + ", userId: " + userId
@@ -127,10 +139,28 @@ public class TimesheetServiceImpl extends TimesheetServiceBaseImpl {
 				+ clockInTime + ", clockOutTime: " + clockOutTime + ", fulldayOrTimeBased: " + fulldayOrTimeBased
 				+ ", type: " + type + ", actor: " + actor);
 
+		Timesheet timesheet = timesheetLocalService.fetchTimesheet((int) timesheetId);
+		if (timesheet == null) {
+			timesheet = createTimeSheet(actor, 0d, 0d, 0d, 0d, 0d, 0d, 0d, "-", "NEW", "", logDate.getTime(), actor);
+		}
 		SimpleDateFormat sdfFullTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
 		Date clockInTimeDt = sdfFullTime.parse(sdfDate.format(logDate) + " " + clockInTime);
 		Date clockOutTimeDt = sdfFullTime.parse(sdfDate.format(logDate) + " " + clockOutTime);
+		double period = DateUtils.hourDiff(clockInTimeDt, clockOutTimeDt);
+
+		// Validation is required here, to prevent duplicated timesheet
+		// time duration
+
+		List<TimesheetDetails> existingDetails = getTimesheetDetails(timesheetId, actor);
+		if (existingDetails != null) {
+			for (TimesheetDetails detail : existingDetails) {
+				if (!(clockOutTimeDt.before(detail.getClockInTime()) || clockInTimeDt.after(detail.getClockOutTime()))) {
+					throw new Exception("There is already existing timesheet between " + clockInTime + " and "
+							+ clockOutTime);
+				}
+			}
+		}
 
 		TimesheetDetails timesheetDetails = timesheetDetailsLocalService
 				.createTimesheetDetails((int) CounterLocalServiceUtil.increment(TimesheetDetails.class.toString()));
@@ -139,15 +169,28 @@ public class TimesheetServiceImpl extends TimesheetServiceBaseImpl {
 		timesheetDetails.setRemarks(remarks);
 		timesheetDetails.setFulldayOrTimeBased(fulldayOrTimeBased);
 		timesheetDetails.setType(type);
-
-		Timesheet timesheet = timesheetLocalService.fetchTimesheet((int) timesheetId);
-		if (timesheet == null) {
-			timesheet = createTimeSheet(actor, 0d, 0d, 0d, 0d, 0d, 0d, 0d, "-", "NEW", "", logDate.getTime(), actor);
-		}
-
 		timesheetDetails.setTimesheetId(timesheet.getTimesheetId());
 
 		timesheetDetailsPersistence.update(timesheetDetails);
+
+		if (type.equalsIgnoreCase("regular")) {
+			timesheet.setRegular(timesheet.getRegular() + period);
+		} else if (type.equalsIgnoreCase("overtime")) {
+			timesheet.setOvertime(timesheet.getOvertime() + period);
+		} else if (type.equalsIgnoreCase("sick")) {
+			timesheet.setSick(timesheet.getSick() + period);
+		} else if (type.equalsIgnoreCase("vacation")) {
+			timesheet.setVacation(timesheet.getVacation() + period);
+		} else if (type.equalsIgnoreCase("holiday")) {
+			timesheet.setHoliday(timesheet.getHoliday() + period);
+		} else if (type.equalsIgnoreCase("unpaid")) {
+			timesheet.setUnpaid(timesheet.getUnpaid() + period);
+		} else if (type.equalsIgnoreCase("other")) {
+			timesheet.setOther(timesheet.getOther() + period);
+		}
+
+		timesheetPersistence.update(timesheet);
+
 		return timesheetDetails;
 
 	}
@@ -234,6 +277,21 @@ public class TimesheetServiceImpl extends TimesheetServiceBaseImpl {
 
 	public void submitMonth(int year, int month, String userId, String actor) throws Exception {
 		_log.info("submitMonth [year: " + year + ", month: " + month + ", userId: " + userId + "]");
+		List<TimesheetMonth> timesheetMonths = getTimesheetMonth(year, month, userId, actor);
+		TimesheetMonth timesheetMonth = null;
+		if (timesheetMonths == null || timesheetMonths.size() <= 0) {
+			timesheetMonth = timesheetMonthLocalService.createTimesheetMonth((int) CounterLocalServiceUtil
+					.increment(TimesheetMonth.class.toString()));
+		} else {
+			timesheetMonth = timesheetMonths.get(0);
+		}
+
+		timesheetMonth.setSubmittedDate(new Date());
+		timesheetMonth.setYear(year);
+		timesheetMonth.setMonth(month);
+		timesheetMonth.setEmployeeScreenName(userId);
+		timesheetMonth.setStatus("SUBMITTED");
+		timesheetMonthPersistence.update(timesheetMonth);
 	}
 
 	public void rejectMonth(int year, int month, String comment, String actor) throws Exception {

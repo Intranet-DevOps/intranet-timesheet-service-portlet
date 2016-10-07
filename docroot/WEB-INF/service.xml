@@ -3,6 +3,19 @@
 <service-builder package-path="sg.com.para.intranet.timesheet.services">
 	<author>Fernando Karnagi</author>
 	<namespace>intranettimesheet</namespace> 
+	<entity name="TimesheetMonth" local-service="true" remote-service="true"
+		table="intranet_timesheet_month">
+		<column name="timesheetMonthId" type="int" primary="true"></column>
+		<column name="month" type="int"></column>
+		<column name="year" type="int"></column>
+		<column name="employeeScreenName" type="String"></column>
+		<column name="status" type="String"></column>
+		<column name="submittedDate" type="Date"></column>
+		<column name="approvedBy" type="String"></column>
+		<column name="approvedDate" type="Date"></column>
+		<column name="processedBy" type="String"></column>
+		<column name="processedDate" type="Date"></column>
+	</entity>
 	<entity name="Timesheet" local-service="true" remote-service="true"
 		table="intranet_timesheet">
 		<column name="timesheetId" type="int" primary="true"></column>

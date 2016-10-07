@@ -57,12 +57,39 @@
 			<transient name="primaryKeyObj" />
 		</attributes>
 	</mapped-superclass>
+	<mapped-superclass class="sg.com.para.intranet.timesheet.services.model.impl.TimesheetMonthModelImpl">
+		<attributes>
+			<id name="timesheetMonthId" />
+			<basic name="month" />
+			<basic name="year" />
+			<basic name="employeeScreenName" />
+			<basic name="status" />
+			<basic name="submittedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="approvedBy" />
+			<basic name="approvedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="processedBy" />
+			<basic name="processedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
 	<entity class="sg.com.para.intranet.timesheet.services.model.impl.TimesheetImpl" name="Timesheet">
 		<table name="intranet_timesheet" />
 		<attributes />
 	</entity>
 	<entity class="sg.com.para.intranet.timesheet.services.model.impl.TimesheetDetailsImpl" name="TimesheetDetails">
 		<table name="intranet_timesheet_details" />
+		<attributes />
+	</entity>
+	<entity class="sg.com.para.intranet.timesheet.services.model.impl.TimesheetMonthImpl" name="TimesheetMonth">
+		<table name="intranet_timesheet_month" />
 		<attributes />
 	</entity>
 </entity-mappings>

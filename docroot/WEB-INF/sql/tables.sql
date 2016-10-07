@@ -34,3 +34,16 @@ create table intranet_timesheet_details (
 	type_ VARCHAR(75) null,
 	fulldayOrTimeBased VARCHAR(75) null
 );
+
+create table intranet_timesheet_month (
+	timesheetMonthId INTEGER not null primary key,
+	month INTEGER,
+	year INTEGER,
+	employeeScreenName VARCHAR(75) null,
+	status VARCHAR(75) null,
+	submittedDate DATE null,
+	approvedBy VARCHAR(75) null,
+	approvedDate DATE null,
+	processedBy VARCHAR(75) null,
+	processedDate DATE null
+);

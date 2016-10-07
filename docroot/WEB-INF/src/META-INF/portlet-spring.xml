@@ -7,4 +7,7 @@
 	<bean id="sg.com.para.intranet.timesheet.services.service.TimesheetDetailsLocalService" class="sg.com.para.intranet.timesheet.services.service.impl.TimesheetDetailsLocalServiceImpl" />
 	<bean id="sg.com.para.intranet.timesheet.services.service.TimesheetDetailsService" class="sg.com.para.intranet.timesheet.services.service.impl.TimesheetDetailsServiceImpl" />
 	<bean id="sg.com.para.intranet.timesheet.services.service.persistence.TimesheetDetailsPersistence" class="sg.com.para.intranet.timesheet.services.service.persistence.TimesheetDetailsPersistenceImpl" parent="basePersistence" />
+	<bean id="sg.com.para.intranet.timesheet.services.service.TimesheetMonthLocalService" class="sg.com.para.intranet.timesheet.services.service.impl.TimesheetMonthLocalServiceImpl" />
+	<bean id="sg.com.para.intranet.timesheet.services.service.TimesheetMonthService" class="sg.com.para.intranet.timesheet.services.service.impl.TimesheetMonthServiceImpl" />
+	<bean id="sg.com.para.intranet.timesheet.services.service.persistence.TimesheetMonthPersistence" class="sg.com.para.intranet.timesheet.services.service.persistence.TimesheetMonthPersistenceImpl" parent="basePersistence" />
 </beans>

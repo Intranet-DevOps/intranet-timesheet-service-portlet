@@ -14,7 +14,7 @@
 
 package sg.com.para.intranet.timesheet.services.service.base;
 
-import sg.com.para.intranet.timesheet.services.service.TimesheetDetailsLocalServiceUtil;
+import sg.com.para.intranet.timesheet.services.service.TimesheetMonthLocalServiceUtil;
 
 import java.util.Arrays;
 
@@ -22,26 +22,26 @@ import java.util.Arrays;
  * @author Fernando Karnagi
  * @generated
  */
-public class TimesheetDetailsLocalServiceClpInvoker {
-	public TimesheetDetailsLocalServiceClpInvoker() {
-		_methodName0 = "addTimesheetDetails";
+public class TimesheetMonthLocalServiceClpInvoker {
+	public TimesheetMonthLocalServiceClpInvoker() {
+		_methodName0 = "addTimesheetMonth";
 
 		_methodParameterTypes0 = new String[] {
-				"sg.com.para.intranet.timesheet.services.model.TimesheetDetails"
+				"sg.com.para.intranet.timesheet.services.model.TimesheetMonth"
 			};
 
-		_methodName1 = "createTimesheetDetails";
+		_methodName1 = "createTimesheetMonth";
 
 		_methodParameterTypes1 = new String[] { "int" };
 
-		_methodName2 = "deleteTimesheetDetails";
+		_methodName2 = "deleteTimesheetMonth";
 
 		_methodParameterTypes2 = new String[] { "int" };
 
-		_methodName3 = "deleteTimesheetDetails";
+		_methodName3 = "deleteTimesheetMonth";
 
 		_methodParameterTypes3 = new String[] {
-				"sg.com.para.intranet.timesheet.services.model.TimesheetDetails"
+				"sg.com.para.intranet.timesheet.services.model.TimesheetMonth"
 			};
 
 		_methodName4 = "dynamicQuery";
@@ -80,11 +80,11 @@ public class TimesheetDetailsLocalServiceClpInvoker {
 				"com.liferay.portal.kernel.dao.orm.Projection"
 			};
 
-		_methodName10 = "fetchTimesheetDetails";
+		_methodName10 = "fetchTimesheetMonth";
 
 		_methodParameterTypes10 = new String[] { "int" };
 
-		_methodName11 = "getTimesheetDetails";
+		_methodName11 = "getTimesheetMonth";
 
 		_methodParameterTypes11 = new String[] { "int" };
 
@@ -92,18 +92,18 @@ public class TimesheetDetailsLocalServiceClpInvoker {
 
 		_methodParameterTypes12 = new String[] { "java.io.Serializable" };
 
-		_methodName13 = "getTimesheetDetailses";
+		_methodName13 = "getTimesheetMonths";
 
 		_methodParameterTypes13 = new String[] { "int", "int" };
 
-		_methodName14 = "getTimesheetDetailsesCount";
+		_methodName14 = "getTimesheetMonthsCount";
 
 		_methodParameterTypes14 = new String[] {  };
 
-		_methodName15 = "updateTimesheetDetails";
+		_methodName15 = "updateTimesheetMonth";
 
 		_methodParameterTypes15 = new String[] {
-				"sg.com.para.intranet.timesheet.services.model.TimesheetDetails"
+				"sg.com.para.intranet.timesheet.services.model.TimesheetMonth"
 			};
 
 		_methodName46 = "getBeanIdentifier";
@@ -119,44 +119,44 @@ public class TimesheetDetailsLocalServiceClpInvoker {
 		Object[] arguments) throws Throwable {
 		if (_methodName0.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes0, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.addTimesheetDetails((sg.com.para.intranet.timesheet.services.model.TimesheetDetails)arguments[0]);
+			return TimesheetMonthLocalServiceUtil.addTimesheetMonth((sg.com.para.intranet.timesheet.services.model.TimesheetMonth)arguments[0]);
 		}
 
 		if (_methodName1.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes1, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.createTimesheetDetails(((Integer)arguments[0]).intValue());
+			return TimesheetMonthLocalServiceUtil.createTimesheetMonth(((Integer)arguments[0]).intValue());
 		}
 
 		if (_methodName2.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes2, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.deleteTimesheetDetails(((Integer)arguments[0]).intValue());
+			return TimesheetMonthLocalServiceUtil.deleteTimesheetMonth(((Integer)arguments[0]).intValue());
 		}
 
 		if (_methodName3.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes3, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.deleteTimesheetDetails((sg.com.para.intranet.timesheet.services.model.TimesheetDetails)arguments[0]);
+			return TimesheetMonthLocalServiceUtil.deleteTimesheetMonth((sg.com.para.intranet.timesheet.services.model.TimesheetMonth)arguments[0]);
 		}
 
 		if (_methodName4.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes4, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.dynamicQuery();
+			return TimesheetMonthLocalServiceUtil.dynamicQuery();
 		}
 
 		if (_methodName5.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes5, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
+			return TimesheetMonthLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
 		}
 
 		if (_methodName6.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes6, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
+			return TimesheetMonthLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue());
 		}
 
 		if (_methodName7.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes7, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
+			return TimesheetMonthLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue(),
 				(com.liferay.portal.kernel.util.OrderByComparator)arguments[3]);
@@ -164,54 +164,54 @@ public class TimesheetDetailsLocalServiceClpInvoker {
 
 		if (_methodName8.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes8, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
+			return TimesheetMonthLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
 		}
 
 		if (_methodName9.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes9, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
+			return TimesheetMonthLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
 				(com.liferay.portal.kernel.dao.orm.Projection)arguments[1]);
 		}
 
 		if (_methodName10.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes10, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.fetchTimesheetDetails(((Integer)arguments[0]).intValue());
+			return TimesheetMonthLocalServiceUtil.fetchTimesheetMonth(((Integer)arguments[0]).intValue());
 		}
 
 		if (_methodName11.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes11, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.getTimesheetDetails(((Integer)arguments[0]).intValue());
+			return TimesheetMonthLocalServiceUtil.getTimesheetMonth(((Integer)arguments[0]).intValue());
 		}
 
 		if (_methodName12.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes12, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.getPersistedModel((java.io.Serializable)arguments[0]);
+			return TimesheetMonthLocalServiceUtil.getPersistedModel((java.io.Serializable)arguments[0]);
 		}
 
 		if (_methodName13.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes13, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.getTimesheetDetailses(((Integer)arguments[0]).intValue(),
+			return TimesheetMonthLocalServiceUtil.getTimesheetMonths(((Integer)arguments[0]).intValue(),
 				((Integer)arguments[1]).intValue());
 		}
 
 		if (_methodName14.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes14, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.getTimesheetDetailsesCount();
+			return TimesheetMonthLocalServiceUtil.getTimesheetMonthsCount();
 		}
 
 		if (_methodName15.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes15, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.updateTimesheetDetails((sg.com.para.intranet.timesheet.services.model.TimesheetDetails)arguments[0]);
+			return TimesheetMonthLocalServiceUtil.updateTimesheetMonth((sg.com.para.intranet.timesheet.services.model.TimesheetMonth)arguments[0]);
 		}
 
 		if (_methodName46.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes46, parameterTypes)) {
-			return TimesheetDetailsLocalServiceUtil.getBeanIdentifier();
+			return TimesheetMonthLocalServiceUtil.getBeanIdentifier();
 		}
 
 		if (_methodName47.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes47, parameterTypes)) {
-			TimesheetDetailsLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
+			TimesheetMonthLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}

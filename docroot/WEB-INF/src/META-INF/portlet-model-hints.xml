@@ -29,4 +29,16 @@
 		<field name="type" type="String" />
 		<field name="fulldayOrTimeBased" type="String" />
 	</model>
+	<model name="sg.com.para.intranet.timesheet.services.model.TimesheetMonth">
+		<field name="timesheetMonthId" type="int" />
+		<field name="month" type="int" />
+		<field name="year" type="int" />
+		<field name="employeeScreenName" type="String" />
+		<field name="status" type="String" />
+		<field name="submittedDate" type="Date" />
+		<field name="approvedBy" type="String" />
+		<field name="approvedDate" type="Date" />
+		<field name="processedBy" type="String" />
+		<field name="processedDate" type="Date" />
+	</model>
 </model-hints>

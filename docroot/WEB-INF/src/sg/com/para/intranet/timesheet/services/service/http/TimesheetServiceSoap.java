@@ -77,6 +77,23 @@ public class TimesheetServiceSoap {
 		}
 	}
 
+	public static sg.com.para.intranet.timesheet.services.model.TimesheetMonthSoap[] getTimesheetMonth(
+		int year, int month, java.lang.String userId, java.lang.String actor)
+		throws RemoteException {
+		try {
+			java.util.List<sg.com.para.intranet.timesheet.services.model.TimesheetMonth> returnValue =
+				TimesheetServiceUtil.getTimesheetMonth(year, month, userId,
+					actor);
+
+			return sg.com.para.intranet.timesheet.services.model.TimesheetMonthSoap.toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
 	public static sg.com.para.intranet.timesheet.services.model.TimesheetSoap[] findTimesheetsByUser(
 		java.util.Date startDate, java.util.Date endDate,
 		java.lang.String userId, java.lang.String actor)

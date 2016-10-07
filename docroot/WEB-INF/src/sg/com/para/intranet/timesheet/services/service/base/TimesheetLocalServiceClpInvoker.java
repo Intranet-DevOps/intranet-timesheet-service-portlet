@@ -106,13 +106,13 @@ public class TimesheetLocalServiceClpInvoker {
 				"sg.com.para.intranet.timesheet.services.model.Timesheet"
 			};
 
-		_methodName40 = "getBeanIdentifier";
+		_methodName46 = "getBeanIdentifier";
 
-		_methodParameterTypes40 = new String[] {  };
+		_methodParameterTypes46 = new String[] {  };
 
-		_methodName41 = "setBeanIdentifier";
+		_methodName47 = "setBeanIdentifier";
 
-		_methodParameterTypes41 = new String[] { "java.lang.String" };
+		_methodParameterTypes47 = new String[] { "java.lang.String" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -204,13 +204,13 @@ public class TimesheetLocalServiceClpInvoker {
 			return TimesheetLocalServiceUtil.updateTimesheet((sg.com.para.intranet.timesheet.services.model.Timesheet)arguments[0]);
 		}
 
-		if (_methodName40.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes40, parameterTypes)) {
+		if (_methodName46.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes46, parameterTypes)) {
 			return TimesheetLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName41.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes41, parameterTypes)) {
+		if (_methodName47.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes47, parameterTypes)) {
 			TimesheetLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
@@ -251,8 +251,8 @@ public class TimesheetLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName40;
-	private String[] _methodParameterTypes40;
-	private String _methodName41;
-	private String[] _methodParameterTypes41;
+	private String _methodName46;
+	private String[] _methodParameterTypes46;
+	private String _methodName47;
+	private String[] _methodParameterTypes47;
 }

@@ -68,6 +68,12 @@ public class TimesheetServiceUtil {
 		return getService().getTimesheet(timesheetId, actor);
 	}
 
+	public static java.util.List<sg.com.para.intranet.timesheet.services.model.TimesheetMonth> getTimesheetMonth(
+		int year, int month, java.lang.String userId, java.lang.String actor)
+		throws java.lang.Exception {
+		return getService().getTimesheetMonth(year, month, userId, actor);
+	}
+
 	public static java.util.List<sg.com.para.intranet.timesheet.services.model.Timesheet> findTimesheetsByUser(
 		java.util.Date startDate, java.util.Date endDate,
 		java.lang.String userId, java.lang.String actor)

@@ -27,4 +27,11 @@ public class DateUtils {
 		cal1.add(Calendar.DATE, numOfDays);
 		return cal1.getTime();
 	}
+
+	public static double hourDiff(Date d1, Date d2) {
+		double ret = 0;
+		double diff = d2.getTime() - d1.getTime();
+		ret = diff / 3600000;
+		return ret;
+	}
 }

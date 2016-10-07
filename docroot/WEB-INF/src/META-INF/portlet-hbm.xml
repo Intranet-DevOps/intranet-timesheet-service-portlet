@@ -4,6 +4,7 @@
 <hibernate-mapping default-lazy="false" auto-import="false">
 	<import class="sg.com.para.intranet.timesheet.services.model.Timesheet" />
 	<import class="sg.com.para.intranet.timesheet.services.model.TimesheetDetails" />
+	<import class="sg.com.para.intranet.timesheet.services.model.TimesheetMonth" />
 	<class name="sg.com.para.intranet.timesheet.services.model.impl.TimesheetImpl" table="intranet_timesheet">
 		<cache usage="read-write" />
 		<id name="timesheetId" type="int">
@@ -37,5 +38,20 @@
 		<property name="remarks" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="type" type="com.liferay.portal.dao.orm.hibernate.StringType" column="type_" />
 		<property name="fulldayOrTimeBased" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="sg.com.para.intranet.timesheet.services.model.impl.TimesheetMonthImpl" table="intranet_timesheet_month">
+		<cache usage="read-write" />
+		<id name="timesheetMonthId" type="int">
+			<generator class="assigned" />
+		</id>
+		<property name="month" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="year" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="employeeScreenName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="submittedDate" type="org.hibernate.type.TimestampType" />
+		<property name="approvedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="approvedDate" type="org.hibernate.type.TimestampType" />
+		<property name="processedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="processedDate" type="org.hibernate.type.TimestampType" />
 	</class>
 </hibernate-mapping>
