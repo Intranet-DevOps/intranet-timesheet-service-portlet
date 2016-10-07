@@ -14,6 +14,7 @@
 
 package sg.com.para.intranet.timesheet.services.service.impl;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +26,7 @@ import sg.com.para.intranet.timesheet.services.model.TimesheetMonth;
 import sg.com.para.intranet.timesheet.services.model.bean.TimesheetBean;
 import sg.com.para.intranet.timesheet.services.service.base.TimesheetServiceBaseImpl;
 import sg.com.para.intranet.timsheet.services.util.DateUtils;
+import sg.com.para.intranet.timsheet.services.util.NumberUtils;
 
 import com.liferay.counter.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
@@ -105,6 +107,8 @@ public class TimesheetServiceImpl extends TimesheetServiceBaseImpl {
 		_log.info("find with dynamic query [timesheets: " + timesheets + "]");
 		List<Timesheet> timesheetsRet = new ArrayList<Timesheet>();
 		int currentTime = (int) new Date().getTime();
+		DecimalFormat df = new DecimalFormat("#.##");
+
 		while (startDate.before(endDate)) {
 			Timesheet existingTimesheet = isTimesheetPresent(startDate, timesheets);
 			if (existingTimesheet == null) {
@@ -113,6 +117,14 @@ public class TimesheetServiceImpl extends TimesheetServiceBaseImpl {
 				existingTimesheet.setTimesheetId(currentTime);
 				existingTimesheet.setEmployeeScreenName(userId);
 				existingTimesheet.setLogDate(startDate);
+			} else {
+				existingTimesheet.setRegular(NumberUtils.formatHourTwoDecimal(existingTimesheet.getRegular()));
+				existingTimesheet.setOvertime(NumberUtils.formatHourTwoDecimal(existingTimesheet.getOvertime()));
+				existingTimesheet.setSick(NumberUtils.formatHourTwoDecimal(existingTimesheet.getSick()));
+				existingTimesheet.setVacation(NumberUtils.formatHourTwoDecimal(existingTimesheet.getVacation()));
+				existingTimesheet.setUnpaid(NumberUtils.formatHourTwoDecimal(existingTimesheet.getUnpaid()));
+				existingTimesheet.setOther(NumberUtils.formatHourTwoDecimal(existingTimesheet.getOther()));
+				existingTimesheet.setHoliday(NumberUtils.formatHourTwoDecimal(existingTimesheet.getHoliday()));
 			}
 
 			timesheetsRet.add(existingTimesheet);
