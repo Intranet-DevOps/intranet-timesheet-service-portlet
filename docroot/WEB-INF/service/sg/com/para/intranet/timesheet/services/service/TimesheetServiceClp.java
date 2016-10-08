@@ -106,7 +106,8 @@ public class TimesheetServiceClp implements TimesheetService {
 		_methodName15 = "rejectMonth";
 
 		_methodParameterTypes15 = new String[] {
-				"int", "int", "java.lang.String", "java.lang.String"
+				"int", "int", "java.lang.String", "java.lang.String",
+				"java.lang.String"
 			};
 
 		_methodName16 = "approveMonth";
@@ -621,8 +622,9 @@ public class TimesheetServiceClp implements TimesheetService {
 	}
 
 	@Override
-	public void rejectMonth(int year, int month, java.lang.String comment,
-		java.lang.String actor) throws java.lang.Exception {
+	public void rejectMonth(int year, int month, java.lang.String staffId,
+		java.lang.String comment, java.lang.String actor)
+		throws java.lang.Exception {
 		try {
 			_invokableService.invokeMethod(_methodName15,
 				_methodParameterTypes15,
@@ -630,6 +632,8 @@ public class TimesheetServiceClp implements TimesheetService {
 					year,
 					
 				month,
+					
+				ClpSerializer.translateInput(staffId),
 					
 				ClpSerializer.translateInput(comment),
 					
@@ -654,7 +658,7 @@ public class TimesheetServiceClp implements TimesheetService {
 	}
 
 	@Override
-	public void approveMonth(int year, int month, java.lang.String userId,
+	public void approveMonth(int year, int month, java.lang.String staffId,
 		java.lang.String actor) throws java.lang.Exception {
 		try {
 			_invokableService.invokeMethod(_methodName16,
@@ -664,7 +668,7 @@ public class TimesheetServiceClp implements TimesheetService {
 					
 				month,
 					
-				ClpSerializer.translateInput(userId),
+				ClpSerializer.translateInput(staffId),
 					
 				ClpSerializer.translateInput(actor)
 				});

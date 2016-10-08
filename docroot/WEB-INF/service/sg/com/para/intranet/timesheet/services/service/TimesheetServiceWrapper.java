@@ -149,15 +149,16 @@ public class TimesheetServiceWrapper implements TimesheetService,
 	}
 
 	@Override
-	public void rejectMonth(int year, int month, java.lang.String comment,
-		java.lang.String actor) throws java.lang.Exception {
-		_timesheetService.rejectMonth(year, month, comment, actor);
+	public void rejectMonth(int year, int month, java.lang.String staffId,
+		java.lang.String comment, java.lang.String actor)
+		throws java.lang.Exception {
+		_timesheetService.rejectMonth(year, month, staffId, comment, actor);
 	}
 
 	@Override
-	public void approveMonth(int year, int month, java.lang.String userId,
+	public void approveMonth(int year, int month, java.lang.String staffId,
 		java.lang.String actor) throws java.lang.Exception {
-		_timesheetService.approveMonth(year, month, userId, actor);
+		_timesheetService.approveMonth(year, month, staffId, actor);
 	}
 
 	/**

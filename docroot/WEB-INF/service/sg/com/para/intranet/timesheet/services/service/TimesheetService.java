@@ -118,9 +118,10 @@ public interface TimesheetService extends BaseService, InvokableService {
 	public void submitMonth(int year, int month, java.lang.String userId,
 		java.lang.String actor) throws java.lang.Exception;
 
-	public void rejectMonth(int year, int month, java.lang.String comment,
-		java.lang.String actor) throws java.lang.Exception;
+	public void rejectMonth(int year, int month, java.lang.String staffId,
+		java.lang.String comment, java.lang.String actor)
+		throws java.lang.Exception;
 
-	public void approveMonth(int year, int month, java.lang.String userId,
+	public void approveMonth(int year, int month, java.lang.String staffId,
 		java.lang.String actor) throws java.lang.Exception;
 }

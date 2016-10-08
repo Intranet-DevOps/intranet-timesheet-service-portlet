@@ -34,4 +34,29 @@ public class DateUtils {
 		ret = diff / 3600000;
 		return ret;
 	}
+
+	public static Date getStartOfMonth(int year, int month) {
+		Calendar date = Calendar.getInstance();
+		date.set(Calendar.YEAR, year);
+		date.set(Calendar.MONTH, month);
+		date.set(Calendar.DATE, 1);
+		date.set(Calendar.HOUR, 0);
+		date.set(Calendar.MINUTE, 0);
+		date.set(Calendar.SECOND, 0);
+		date.set(Calendar.MILLISECOND, 0);
+		return date.getTime();
+	}
+
+	public static Date getEndOfMonth(int year, int month) {
+		Calendar date = Calendar.getInstance();
+		date.set(Calendar.YEAR, year);
+		date.set(Calendar.MONTH, month + 1);
+		date.set(Calendar.DATE, 1);
+		date.set(Calendar.HOUR, 0);
+		date.set(Calendar.MINUTE, 0);
+		date.set(Calendar.SECOND, 0);
+		date.set(Calendar.MILLISECOND, 0);
+		date.add(Calendar.DATE, -1);
+		return date.getTime();
+	}
 }

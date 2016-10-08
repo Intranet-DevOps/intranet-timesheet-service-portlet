@@ -106,7 +106,8 @@ public class TimesheetServiceClpInvoker {
 		_methodName49 = "rejectMonth";
 
 		_methodParameterTypes49 = new String[] {
-				"int", "int", "java.lang.String", "java.lang.String"
+				"int", "int", "java.lang.String", "java.lang.String",
+				"java.lang.String"
 			};
 
 		_methodName50 = "approveMonth";
@@ -244,7 +245,8 @@ public class TimesheetServiceClpInvoker {
 				Arrays.deepEquals(_methodParameterTypes49, parameterTypes)) {
 			TimesheetServiceUtil.rejectMonth(((Integer)arguments[0]).intValue(),
 				((Integer)arguments[1]).intValue(),
-				(java.lang.String)arguments[2], (java.lang.String)arguments[3]);
+				(java.lang.String)arguments[2], (java.lang.String)arguments[3],
+				(java.lang.String)arguments[4]);
 
 			return null;
 		}

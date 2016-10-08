@@ -304,14 +304,26 @@ public class TimesheetServiceImpl extends TimesheetServiceBaseImpl {
 		timesheetMonth.setEmployeeScreenName(userId);
 		timesheetMonth.setStatus("SUBMITTED");
 		timesheetMonthPersistence.update(timesheetMonth);
+
 	}
 
-	public void rejectMonth(int year, int month, String comment, String actor) throws Exception {
-		_log.info("rejectMonth [year: " + year + ", month: " + month + ", by approver: " + actor + ", comment: "
-				+ comment + "]");
+	public void rejectMonth(int year, int month, String staffId, String comment, String actor) throws Exception {
+		_log.info("rejectMonth [year: " + year + ", month: " + month + ", staffId: " + staffId + ", by approver: "
+				+ actor + ", comment: " + comment + "]");
+		TimesheetMonth timesheetMonth = getTimesheetMonth(year, month, staffId, actor).get(0);
+		timesheetMonth.setApprovedBy(actor);
+		timesheetMonth.setApprovedDate(new Date());
+		timesheetMonth.setStatus("RETURNED");
+		timesheetMonthPersistence.update(timesheetMonth);
 	}
 
-	public void approveMonth(int year, int month, String userId, String actor) throws Exception {
-		_log.info("approveMonth [year: " + year + ", month: " + month + ", userId: " + userId + "]");
+	public void approveMonth(int year, int month, String staffId, String actor) throws Exception {
+		_log.info("approveMonth [year: " + year + ", month: " + month + ", staffId: " + staffId + ", by approver: "
+				+ actor + "]");
+		TimesheetMonth timesheetMonth = getTimesheetMonth(year, month, staffId, actor).get(0);
+		timesheetMonth.setApprovedBy(actor);
+		timesheetMonth.setApprovedDate(new Date());
+		timesheetMonth.setStatus("APPROVED");
+		timesheetMonthPersistence.update(timesheetMonth);
 	}
 }

@@ -252,10 +252,11 @@ public class TimesheetServiceSoap {
 	}
 
 	public static void rejectMonth(int year, int month,
-		java.lang.String comment, java.lang.String actor)
-		throws RemoteException {
+		java.lang.String staffId, java.lang.String comment,
+		java.lang.String actor) throws RemoteException {
 		try {
-			TimesheetServiceUtil.rejectMonth(year, month, comment, actor);
+			TimesheetServiceUtil.rejectMonth(year, month, staffId, comment,
+				actor);
 		}
 		catch (Exception e) {
 			_log.error(e, e);
@@ -265,10 +266,10 @@ public class TimesheetServiceSoap {
 	}
 
 	public static void approveMonth(int year, int month,
-		java.lang.String userId, java.lang.String actor)
+		java.lang.String staffId, java.lang.String actor)
 		throws RemoteException {
 		try {
-			TimesheetServiceUtil.approveMonth(year, month, userId, actor);
+			TimesheetServiceUtil.approveMonth(year, month, staffId, actor);
 		}
 		catch (Exception e) {
 			_log.error(e, e);
